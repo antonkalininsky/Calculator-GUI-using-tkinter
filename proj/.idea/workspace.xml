@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0012d03d-4179-469a-9875-792569aa5128" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="0012d03d-4179-469a-9875-792569aa5128" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +27,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -41,9 +38,9 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\py_projects\calc_tkiner\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
@@ -67,51 +64,13 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state width="1362" height="451" key="GridCell.Tab.0.bottom" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.0.bottom/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state width="1362" height="451" key="GridCell.Tab.0.center" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.0.center/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state width="1362" height="451" key="GridCell.Tab.0.left" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.0.left/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state width="1362" height="451" key="GridCell.Tab.0.right" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.0.right/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state width="1362" height="451" key="GridCell.Tab.1.bottom" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.1.bottom/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state width="1362" height="451" key="GridCell.Tab.1.center" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.1.center/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state width="1362" height="451" key="GridCell.Tab.1.left" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.1.left/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state width="1362" height="451" key="GridCell.Tab.1.right" timestamp="1633428290681">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state width="1362" height="451" key="GridCell.Tab.1.right/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633428290681" />
-    <state x="279" y="589" key="SettingsEditor" timestamp="1633420223401">
-      <screen x="78" y="0" width="2482" height="1440" />
-    </state>
-    <state x="279" y="589" key="SettingsEditor/-1122.0.1122.1920/2622.0.1138.1920/78.0.2482.1440@78.0.2482.1440" timestamp="1633420223401" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>10</line>
-          <option name="timeStamp" value="1" />
+          <line>26</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

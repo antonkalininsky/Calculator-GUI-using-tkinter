@@ -3,9 +3,9 @@ from tkinter import *
 
 class CalcUI(Frame):
 
-    def __init__(self):
+    def __init__(self, win):
         super().__init__()
-        self.initUI()
+        self.initUI(win)
 
     def clicked(self, oper, in1, in2):
         if in1 == '' or in2 == '':
@@ -24,13 +24,16 @@ class CalcUI(Frame):
                     buf = float(in1) / float(in2)
             else:
                 buf = 'error!'
+        if type(buf) is float:
+            buf = round(buf, 3)
+
         self.lblR.configure(text=buf)
 
-    def initUI(self):
+    def initUI(self, win):
         # frames creation
-        frameInputs = Frame(window)
-        frameOperations = Frame(window)
-        frameResult = Frame(window)
+        frameInputs = Frame(win)
+        frameOperations = Frame(win)
+        frameResult = Frame(win)
         # input elements
         lbl1In = Label(frameInputs, text="input 1:")
         txt1In = Entry(frameInputs, width=10)
@@ -65,5 +68,5 @@ class CalcUI(Frame):
 window = Tk()
 window.title('calc lmao')
 window.geometry('500x500')
-calc1 = CalcUI()
+calc1 = CalcUI(window)
 window.mainloop()
