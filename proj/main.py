@@ -2,20 +2,20 @@ from tkinter import *
 
 
 def clicked(oper):
-    if txt1.get() == '' or txt2.get() == '':
+    if txt1In.get() == '' or txt2In.get() == '':
         buf = 'you have empty entries!'
     else:
         if oper == '+':
-            buf = float(txt1.get()) + float(txt2.get())
+            buf = float(txt1In.get()) + float(txt2In.get())
         elif oper == '-':
-            buf = float(txt1.get()) - float(txt2.get())
+            buf = float(txt1In.get()) - float(txt2In.get())
         elif oper == '*':
-            buf = float(txt1.get()) * float(txt2.get())
+            buf = float(txt1In.get()) * float(txt2In.get())
         elif oper == '/':
-            if txt2.get() == '0':
+            if txt2In.get() == '0':
                 buf = 'cant div 0'
             else:
-                buf = float(txt1.get()) / float(txt2.get())
+                buf = float(txt1In.get()) / float(txt2In.get())
         else:
             buf = 'error!'
     lblR.configure(text=buf)
@@ -24,25 +24,38 @@ def clicked(oper):
 window = Tk()
 window.title('calc lmao')
 window.geometry('500x500')
-lbl = Label(window, text="input 1")
-lbl.grid(column=0, row=0)
-txt1 = Entry(window, width=10)
-txt1.grid(column=0, row=1)
-lbl = Label(window, text="input 2")
-lbl.grid(column=0, row=2)
-txt2 = Entry(window, width=10)
-txt2.grid(column=0, row=3)
-btn1 = Button(window, text='+', command=lambda: clicked('+'))
-btn2 = Button(window, text='-', command=lambda: clicked('-'))
-btn3 = Button(window, text='*', command=lambda: clicked('*'))
-btn4 = Button(window, text='/', command=lambda: clicked('/'))
-btn1.grid(column=0, row=4)
-btn2.grid(column=1, row=4)
-btn3.grid(column=2, row=4)
-btn4.grid(column=3, row=4)
-lbl = Label(window, text='result')
-lbl.grid(column=0, row=5)
-global lblR
-lblR = Label(window, text='xxx')
-lblR.grid(column=0, row=6)
+# frames creation
+frameInputs = Frame(window)
+frameOperations = Frame(window)
+frameResult = Frame(window)
+# input elements
+lbl1In = Label(frameInputs, text="input 1:")
+txt1In = Entry(frameInputs, width=10)
+lbl2In = Label(frameInputs, text="input 2:")
+txt2In = Entry(frameInputs, width=10)
+# operations elements
+lblOP = Label(frameOperations, text="operation:")
+btn1 = Button(frameOperations, text='+', command=lambda: clicked('+'))
+btn2 = Button(frameOperations, text='-', command=lambda: clicked('-'))
+btn3 = Button(frameOperations, text='*', command=lambda: clicked('*'))
+btn4 = Button(frameOperations, text='/', command=lambda: clicked('/'))
+# result elements
+lblR1 = Label(frameResult, text='result:')
+lblR = Label(frameResult, text='xxx')
+# final positioning
+frameInputs.pack()
+lbl1In.pack(side=TOP)
+txt1In.pack(side=TOP)
+lbl2In.pack(side=TOP)
+txt2In.pack(side=TOP)
+frameOperations.pack()
+lblOP.pack(side=TOP, fill=X)
+btn1.pack(side=LEFT)
+btn2.pack(side=LEFT)
+btn3.pack(side=LEFT)
+btn4.pack(side=LEFT)
+frameResult.pack()
+lblR1.pack(side=TOP)
+lblR.pack(side=TOP)
+
 window.mainloop()
