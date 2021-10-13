@@ -1,3 +1,4 @@
+import tkinter
 from tkinter import *
 
 
@@ -187,9 +188,44 @@ class CalcButtonsUI(Frame):
         frameInputs.pack()
 
 
-window = Tk()
-window.title('calc lmao')
-window.geometry('500x500')
-calc = CalcEasyUI(window)
-calc2 = CalcButtonsUI(window)
-window.mainloop()
+class SlaveWindow(tkinter.Toplevel):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.geometry('100x100')
+        self.title('wow! another calculator')
+        tkinter.Button(self, text='close', command=self.destroy).pack()
+
+
+class MasterUI(tkinter.Tk):
+    def __init__(self):
+        super().__init__()
+
+        self.title('calculators lmao')
+        self.geometry('200x250')
+
+        tkinter.Label(self, text='CHOOSE YOUR CALCULATOR!', height=3, width=15).pack(fill=X)
+        tkinter.Button(self, text='Easy Lazy Calculator', height=3, width=15, command=lambda: self.CreateWindow(0)).pack()
+        tkinter.Button(self, text='Button Calculator', height=3, width=15, command=lambda: self.CreateWindow(1)).pack()
+        tkinter.Button(self, text='Exit', height=3, width=15, command=self.destroy).pack()
+
+    def CreateWindow(self, calcType):
+        if calcType == 0:
+            secondWindow = tkinter.Toplevel()
+            secondWindow.geometry('200x250')
+            secondWindow.title('Easy Lazy Calculator')
+            calc = CalcEasyUI(secondWindow)
+            calc.pack()
+            secondWindow.mainloop()
+        if calcType == 1:
+            secondWindow = tkinter.Toplevel()
+            secondWindow.geometry('400x400')
+            secondWindow.title('Button Calculator')
+            calc = CalcButtonsUI(secondWindow)
+            calc.pack()
+            secondWindow.mainloop()
+
+
+if __name__ == '__main__':
+    window = MasterUI()
+    window.mainloop()
+
