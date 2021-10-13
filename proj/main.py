@@ -64,12 +64,16 @@ class CalcUI(Frame):
         lblR1.pack(side=TOP)
         self.lblR.pack(side=TOP)
 
-class Message:
 
+class Message:
     text = str()
+    isError = bool()
+    isRslt = bool()
 
     def __init__(self):
         self.text = ''
+        self.isError = False
+        self.isRslt = False
 
     def sendStr(self, wid):
         wid.configure(text=self.text)
@@ -77,27 +81,61 @@ class Message:
     def clearStr(self):
         self.text = ''
 
-    def updateStr (self, oper):
+    def updateStr(self, oper):
         self.text += oper
 
     def click(self, oper, wid):
-        if oper != 'C' and oper != '=':
-            self.updateStr(oper)
+        if self.isRslt or self.isError:
+            self.isRslt = False
+            self.isError = False
+            self.clearStr()
+            self.sendStr(wid)
         if oper == 'C':
             self.clearStr()
+        elif oper == '=':
+            if self.text.count('+') + self.text.count('-') + self.text.count('*') + self.text.count('/') == 1:
+                if self.text.find('+') != -1:
+                    buf = self.text.split('+')
+                    op = 1
+                if self.text.find('-') != -1:
+                    buf = self.text.split('-')
+                    op = 2
+                if self.text.find('/') != -1:
+                    buf = self.text.split('/')
+                    op = 3
+                if self.text.find('*') != -1:
+                    buf = self.text.split('*')
+                    op = 4
+                if buf[0].count('.') <= 1 and buf[1].count('.') <= 1:
+                    if op == 1:
+                        self.text = float(buf[0]) + float(buf[1])
+                    if op == 2:
+                        self.text = float(buf[0]) - float(buf[1])
+                    if op == 3:
+                        if float(buf[1]) != 0:
+                            self.text = float(buf[0]) / float(buf[1])
+                        else:
+                            self.text = 'ERROR'
+                            self.isError = True
+                    if op == 4:
+                        self.text = float(buf[0]) * float(buf[1])
+                    self.text = round(self.text, 3)
+                    self.isRslt = True
+                else:
+                    self.text = 'ERROR'
+                    self.isError = True
+            else:
+                self.text = 'ERROR'
+                self.isError = True
+        else:
+            self.updateStr(oper)
         self.sendStr(wid)
 
 
-    '''
-    if oper != 'C' or oper != '=':
-        inputStr += oper
-        windowInOut.delete(0, END)
-        windowInOut.insert(0, inputStr)
-'''
+
 window = Tk()
 window.title('calc lmao')
 window.geometry('500x500')
-
 
 frameInputs = Frame(window)
 frameScreen = Frame(window)
@@ -127,24 +165,23 @@ btnNum8 = Button(frameInputs, text='8', height=2, width=5, command=lambda: input
 btnNum9 = Button(frameInputs, text='9', height=2, width=5, command=lambda: inputStr.click('9', windowInOut))
 btnPnt = Button(frameInputs, text='.', height=2, width=5, command=lambda: inputStr.click('.', windowInOut))
 
-btnOpPlus.grid(row=0, column=0, sticky=W+S, padx=10, pady=10)
-btnOpMin.grid(row=0, column=1, sticky=W+S, padx=10, pady=10)
-btnOpMul.grid(row=0, column=2, sticky=W+S, padx=10, pady=10)
-btnOpDiv.grid(row=0, column=3, sticky=W+S, padx=10, pady=10)
-btnNum7.grid(row=1, column=0, sticky=W+S, padx=10, pady=10)
-btnNum8.grid(row=1, column=1, sticky=W+S, padx=10, pady=10)
-btnNum9.grid(row=1, column=2, sticky=W+S, padx=10, pady=10)
-btnOpEqual.grid(row=1, column=3, rowspan=2, sticky=W+S, padx=10, pady=10)
-btnNum4.grid(row=2, column=0, sticky=W+S, padx=10, pady=10)
-btnNum5.grid(row=2, column=1, sticky=W+S, padx=10, pady=10)
-btnNum6.grid(row=2, column=2, sticky=W+S, padx=10, pady=10)
-btnNum1.grid(row=3, column=0, sticky=W+S, padx=10, pady=10)
-btnNum2.grid(row=3, column=1, sticky=W+S, padx=10, pady=10)
-btnNum3.grid(row=3, column=2, sticky=W+S, padx=10, pady=10)
-btnOpClr.grid(row=3, column=3, rowspan=2, sticky=W+S, padx=10, pady=10)
-btnNum0.grid(row=4, column=0, columnspan=2, sticky=W+S, padx=10, pady=10)
-btnPnt.grid(row=4, column=2, sticky=W+S, padx=10, pady=10)
-
+btnOpPlus.grid(row=0, column=0, sticky=W + S, padx=10, pady=10)
+btnOpMin.grid(row=0, column=1, sticky=W + S, padx=10, pady=10)
+btnOpMul.grid(row=0, column=2, sticky=W + S, padx=10, pady=10)
+btnOpDiv.grid(row=0, column=3, sticky=W + S, padx=10, pady=10)
+btnNum7.grid(row=1, column=0, sticky=W + S, padx=10, pady=10)
+btnNum8.grid(row=1, column=1, sticky=W + S, padx=10, pady=10)
+btnNum9.grid(row=1, column=2, sticky=W + S, padx=10, pady=10)
+btnOpEqual.grid(row=1, column=3, rowspan=2, sticky=W + S, padx=10, pady=10)
+btnNum4.grid(row=2, column=0, sticky=W + S, padx=10, pady=10)
+btnNum5.grid(row=2, column=1, sticky=W + S, padx=10, pady=10)
+btnNum6.grid(row=2, column=2, sticky=W + S, padx=10, pady=10)
+btnNum1.grid(row=3, column=0, sticky=W + S, padx=10, pady=10)
+btnNum2.grid(row=3, column=1, sticky=W + S, padx=10, pady=10)
+btnNum3.grid(row=3, column=2, sticky=W + S, padx=10, pady=10)
+btnOpClr.grid(row=3, column=3, rowspan=2, sticky=W + S, padx=10, pady=10)
+btnNum0.grid(row=4, column=0, columnspan=2, sticky=W + S, padx=10, pady=10)
+btnPnt.grid(row=4, column=2, sticky=W + S, padx=10, pady=10)
 
 frameScreen.pack()
 frameInputs.pack()
